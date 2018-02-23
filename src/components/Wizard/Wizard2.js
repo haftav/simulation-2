@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import { connect } from 'react-redux';
-import { updateAddress, updateCity, updateState, updateZip } from '../../ducks/reducer';
 import { access } from 'fs';
+import { Link } from 'react-router-dom';
+
+import { updateAddress, updateCity, updateState, updateZip } from '../../ducks/reducer';
 
 class Wizard2 extends Component {
 
     render() {
+        console.log(this.props);
+        const { updateAddress, updateCity, updateState, updateZip,
+                address, city, listingState, zip } = this.props;
         return (
             <div>
                 <h1>Wizard 2</h1>
@@ -17,16 +22,16 @@ class Wizard2 extends Component {
                 </div>
                 <h3>Step 2</h3>
                 <h2>Address</h2>
-                <input />
+                <input value={address} onChange={(e) => updateAddress(e.target.value)}/>
                 <h2>City</h2>
-                <input />
+                <input value={city} onChange={(e) => updateCity(e.target.value)}/>
                 <h2>State</h2>
-                <input />
+                <input value={listingState} onChange={(e) => updateState(e.target.value)}/>
                 <h2>Zip</h2>
-                <input />
+                <input value={zip} onChange={(e) => updateZip(e.target.value)}/>
                 <div>
-                    <button>Previous Step</button>
-                    <button>Next Step</button>
+                    <Link to="/wizard/1"><button>Previous Step</button></Link>
+                    <Link to="/wizard/3"><button>Next Step</button></Link>
                 </div>
             </div>
         )
@@ -34,11 +39,11 @@ class Wizard2 extends Component {
 }
 
 function mapStateToProps(state) {
-    const { address, city, state, zip } = state;
+    const { address, city, listingState, zip } = state;
     return {
         address,
         city,
-        state,
+        listingState,
         zip
     }
 }
@@ -50,4 +55,4 @@ let actions = {
     updateZip
 }
 
-export default connect(mapStateToProps, action)(Wizard2);
+export default connect(mapStateToProps, actions)(Wizard2);

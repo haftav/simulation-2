@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-export default class Wizard3 extends Component {
+import { updateImage } from '../../ducks/reducer';
+
+class Wizard3 extends Component {
 
     render() {
+        console.log(this.props);
+        const { updateImage, image } = this.props;
         return (
             <div>
                 <h1>Wizard 3</h1>
@@ -18,14 +24,27 @@ export default class Wizard3 extends Component {
 
                 </div>
                 <h2>Image URL</h2>
-                <input />
+                <input value={image} onChange={(e) => updateImage(e.target.value)}/>
 
                 <div>
-                    <button>Previous Step</button>
-                    <button>Next Step</button>
+                    <Link to="/wizard/2"><button>Previous Step</button></Link>
+                    <Link to="/wizard/4"><button>Next Step</button></Link>
                 </div>
             </div>
 
         )
     }
 }
+
+function mapStateToProps(state) {
+    const { image } = state;
+    return {
+        image
+    }
+}
+
+let actions = {
+    updateImage
+}
+
+export default connect(mapStateToProps, actions)(Wizard3);

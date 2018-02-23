@@ -42,6 +42,7 @@ class Auth extends Component {
         const { username, password } = this.state;
         axios.post('/api/auth/login', { username, password }).then(res => {
             if (res.data) {
+                this.props.updateUser({ username: res.data.username, id: res.data.id })
                 this.setState({ redirect: true })
             }
         })

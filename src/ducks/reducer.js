@@ -3,7 +3,7 @@ let initialState = {
     propDescription: '',
     address: '',
     city: '',
-    state: '',
+    listingState: '',
     zip: '',
     image: '',
     loanAmount: 0,
@@ -23,6 +23,7 @@ const UPDATE_LOAN_AMOUNT = "UPDATE_LOAN_AMOUNT";
 const UPDATE_MONTHLY_MORTGAGE = "UPDATE_MONTHLY_MORTGAGE";
 const UPDATE_DESIRED_RENT = "UPDATE_DESIRED_RENT";
 const UPDATE_USER = "UPDATE_USER";
+const RESET_STATE = "RESET_STATE";
 
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -35,7 +36,7 @@ export default function (state = initialState, action) {
         case UPDATE_CITY:
             return Object.assign({}, state, { city: action.payload })        
         case UPDATE_STATE:
-            return Object.assign({}, state, { state: action.payload })
+            return Object.assign({}, state, { listingState: action.payload })
         case UPDATE_ZIP:
             return Object.assign({}, state, { zip: action.payload })
         case UPDATE_IMAGE:
@@ -48,6 +49,8 @@ export default function (state = initialState, action) {
             return Object.assign({}, state, { desiredRent: action.payload })
         case UPDATE_USER:
             return Object.assign({}, state, { user: Object.assign({}, action.payload) })
+        case RESET_STATE:
+            return Object.assign({}, action.payload)
         default: return state;
     }
 }
@@ -126,5 +129,24 @@ export function updateUser(user) {
     return {
         type: UPDATE_USER,
         payload: user
+    }
+}
+
+export function resetState(user) {
+    return {
+        type: RESET_STATE,
+        payload: {
+            propName: '',
+            propDescription: '',
+            address: '',
+            city: '',
+            listingState: '',
+            zip: '',
+            image: '',
+            loanAmount: 0,
+            monthlyMortgage: 0,
+            desiredRent: 0,
+            user: user
+        }
     }
 }
