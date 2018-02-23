@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
+import { connect } from 'react-redux';
+import { updateAddress, updateCity, updateState, updateZip } from '../../ducks/reducer';
+import { access } from 'fs';
 
-export default class Wizard2 extends Component {
+class Wizard2 extends Component {
 
     render() {
         return (
@@ -29,3 +32,22 @@ export default class Wizard2 extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    const { address, city, state, zip } = state;
+    return {
+        address,
+        city,
+        state,
+        zip
+    }
+}
+
+let actions = {
+    updateAddress,
+    updateCity,
+    updateState,
+    updateZip
+}
+
+export default connect(mapStateToProps, action)(Wizard2);

@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router';
 
-export default class Auth extends Component {
+import { connect } from 'react-redux';
+import { updateUser } from '../../ducks/reducer'
+
+
+class Auth extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            redirect: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -22,18 +28,30 @@ export default class Auth extends Component {
     }
 
     handleRegister() {
-        const { username, password } = this.state
+        const { username, password } = this.state;
         axios.post('/api/auth/register', { username, password }).then(res => {
-            console.log(res.data);
+            if (res.data) {
+                console.log(res.data.username, res.data.id);
+                this.props.updateUser({ username: res.data.username, id: res.data.id })
+                this.setState({ redirect: true })
+            }
         })
     }
 
     handleLogin() {
-
+        const { username, password } = this.state;
+        axios.post('/api/auth/login', { username, password }).then(res => {
+            if (res.data) {
+                this.setState({ redirect: true })
+            }
+        })
     }
 
     render() {
-        console.log(this.state);
+        console.log(this.props);
+        if (this.state.redirect) {
+            return <Redirect to="/dashboard" />
+        }
         return (
             <div>
                 <div>
@@ -43,12 +61,27 @@ export default class Auth extends Component {
                     <h2>Password</h2>
                     <input onChange={(e) => this.handleChange("password", e.target.value)}/>
                     <div className="auth-buttons">
-                        <button>Login</button>
-                        <button>Register</button>
+                        <button onClick={this.handleLogin}>Login</button>
+                        <button onClick={this.handleRegister}>Register</button>
                     </div>
                 </div>
             </div>
         )
     }
 }
+
+
+function mapStateToProps(state) {
+    const { user } = state;
+    return {
+        user
+    }
+}
+
+let actions = {
+    updateUser
+}
+
+export default connect(mapStateToProps, actions)(Auth);
+
 

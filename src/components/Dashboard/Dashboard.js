@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
+import { Link } from 'react-router-dom';
 
 export default class Dashboard extends Component {
 
@@ -9,7 +10,7 @@ export default class Dashboard extends Component {
                 <h1>Dashboard</h1>
                 <Header />
                 <div>
-                    <button>Add new property</button>
+                    <Link to="/wizard/1" ><button>Add new property</button></Link>
                     <span>
                         <p>List properties with "desired rent" greater than: $
                             <span>
