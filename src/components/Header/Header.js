@@ -26,12 +26,15 @@ class Header extends Component {
 
     render() {
         if (this.state.redirect) {
-            return <Redirect to="/"/>
+            return <Redirect to="/" />
         }
         return (
             <div className="header">
                 <div className="header-content">
-                    <h1>Header</h1>
+                    <div className="header-left">
+                        <img src="https://raw.githubusercontent.com/DevMountain/simulation-2/master/assets/auth_logo.png" alt="house" />
+                        <h1>Houser Dashboard</h1>
+                    </div>
                     <button onClick={this.handleLogout}>Log Out</button>
                 </div>
             </div>

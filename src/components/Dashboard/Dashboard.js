@@ -3,6 +3,8 @@ import Header from '../Header/Header';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { resetState, logout } from '../../ducks/reducer';
+import { Redirect } from 'react-router';
 
 import "./Dashboard.css";
 
@@ -12,7 +14,8 @@ class Dashboard extends Component {
 
         this.state = {
             properties: [],
-            query: null
+            query: null,
+            logout: false
         }
 
         this.filterProperties = this.filterProperties.bind(this);
@@ -22,15 +25,14 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
+
         axios.get('/api/properties').then(res => {
-            console.log(res.data);
             this.setState({ properties: res.data })
         })
     }
 
     filterProperties() {
         axios.get(`/api/properties?rent=${Number(this.state.query)}`).then(res => {
-            console.log(res.data);
             this.setState({ properties: res.data })
         })
     }
@@ -56,6 +58,11 @@ class Dashboard extends Component {
     }
 
     render() {
+
+        if (this.state.logout) {
+            console.log(true);
+            return <Redirect to="/"/>
+        }
         console.log(this.props);
         console.log(this.state.properties);
         let properties = this.state.properties.filter((el) => el.userid == this.props.user.id)
@@ -110,4 +117,9 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Dashboard);
+let actions = {
+    resetState,
+    logout
+}
+
+export default connect(mapStateToProps, actions)(Dashboard);

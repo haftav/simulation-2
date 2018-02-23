@@ -2,6 +2,7 @@
     height: 100px;
     width: 100%;
     background: #519872;
+    color: white;
 }
 
 .header-content {
@@ -11,4 +12,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.header-left {
+    display: flex;
+}
+
+.header img {
+    height: 50px;
+    display: block;
+    margin-right: 20px;
 }
