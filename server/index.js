@@ -6,6 +6,7 @@ const cors = require('cors');
 const massive = require('massive');
 
 const auth_controller = require('./controllers/auth_controller.js');
+const prop_controller = require('./controllers/prop_controller.js');
 const checkForSession = require('./middlewares/checkForSession');
 
 const app = express();
@@ -18,9 +19,17 @@ app.use(session({
 }));
 app.use(checkForSession);
 
+//AUTH CONTROLLERS
+
 app.post('/api/auth/login', auth_controller.login);
 app.post('/api/auth/register', auth_controller.register);
 app.post('/api/auth/logout', auth_controller.logout);
+
+//PROPERTY CONTROLLERS 
+
+app.post('/api/properties', prop_controller.addProperty);
+app.get('/api/properties', prop_controller.getProperties);
+app.delete('/api/properties/:id', prop_controller.deleteProperty);
 
 var port = process.env.PORT || 3005;
 

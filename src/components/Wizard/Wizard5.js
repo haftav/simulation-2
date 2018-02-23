@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateDesiredRent, resetState } from '../../ducks/reducer';
+import axios from 'axios';
+import { Redirect } from 'react-router';
 
 import Header from '../Header/Header';
 
@@ -17,16 +19,42 @@ class Wizard5 extends Component {
     }
 
     addToDatabase() {
+        const { propName, propDescription, address, 
+            city, listingState, zip, image, loanAmount, 
+            desiredRent, monthlyMortgage, user} = this.props;
+        const userid = user.id;
+
+        axios.post('/api/properties', {
+            propName,
+            propDescription,
+            address,
+            city,
+            listingState,
+            zip,
+            image,
+            loanAmount,
+            desiredRent,
+            monthlyMortgage,
+            userid: String(userid)
+        }).then(res => {
+            this.setState({ redirect: true })
+        })
         this.props.resetState(this.props.user);
     }
 
     render() {
-        const { updateDesiredRent, resetState, desiredRent, monthlyMortgage, user } = this.props;
+        const { propName, propDescription, address, 
+                city, listingState, zip, image, loanAmount, 
+                updateDesiredRent, resetState, desiredRent, 
+                monthlyMortgage, user } = this.props;
         console.log(this.props);
+        if (this.state.redirect) {
+            return <Redirect to="/dashboard" />
+        }
         return (
             <div>
-                <h1>Wizard 5</h1>
                 <Header />
+                <h1>Wizard 5</h1>
                 <div>
                     <h1>Add new listing</h1>
                     <button>Cancel</button>
@@ -45,8 +73,18 @@ class Wizard5 extends Component {
 }
 
 function mapStateToProps(state) {
-    const { monthlyMortgage, desiredRent, user } = state;
+    const { propName, propDescription, address, 
+        city, listingState, zip, image, loanAmount, 
+        monthlyMortgage, desiredRent, user } = state;
     return {
+        propName, 
+        propDescription,
+        address,
+        city,
+        listingState,
+        zip,
+        image,
+        loanAmount,
         monthlyMortgage,
         desiredRent,
         user

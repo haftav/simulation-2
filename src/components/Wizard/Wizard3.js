@@ -12,8 +12,8 @@ class Wizard3 extends Component {
         const { updateImage, image } = this.props;
         return (
             <div>
-                <h1>Wizard 3</h1>
                 <Header />
+                <h1>Wizard 3</h1>
                 <div>
                     <h1>Add new listing</h1>
                     <button>Cancel</button>

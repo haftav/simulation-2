@@ -29,6 +29,6 @@ module.exports = {
     logout: (req, res) => {
         const { session } = req;
         session.destroy();
-        res.status(200).send('Logged Out');
+        res.status(200).send(req.session);
     }
 }

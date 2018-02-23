@@ -11,8 +11,8 @@ class Wizard4 extends Component {
         const { updateLoanAmount, updateMonthlyMortgage, loanAmount, monthlyMortgage } = this.props;
         return (
             <div>
-                <h1>Wizard 4</h1>
                 <Header />
+                <h1>Wizard 4</h1>
                 <div>
                     <h1>Add new listing</h1>
                     <button>Cancel</button>

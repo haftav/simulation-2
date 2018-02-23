@@ -12,8 +12,8 @@ class Wizard1 extends Component {
         const { updatePropDescription, updatePropName, propName, propDescription } = this.props;
         return (
             <div>
-                <h1>Wizard 1</h1>
                 <Header />
+                <h1>Wizard 1</h1>
                 <div>
                     <h1>Add new listing</h1>
                     <button>Cancel</button>

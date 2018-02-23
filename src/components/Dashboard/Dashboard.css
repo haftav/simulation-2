@@ -1,0 +1,73 @@
+.add-new {
+    height: 40px;
+    width: 170px;
+    background: #8AEA92;
+    border: none;
+    font-size: 17px;
+    margin: 25px;
+}
+
+.dashboard {
+    background: white;
+    min-height: 100vh;
+    width: 60%;
+    margin: auto;
+}
+
+.dashboard hr {
+    width: 80%;
+    margin: 25px auto;
+}
+
+.dashboard input {
+    margin-right: 12px;
+    margin-left: 3px;
+}
+
+.filter-span button {
+    margin: 0px 10px;
+    height: 27px;
+    width: 50px;
+    font-size: 15px;
+}
+
+.property-div {
+    background: #F6F0F0;
+    width: 75%;
+    min-height: 200px;
+    margin: 25px auto;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.property-div h2 {
+    font-size: 20px;
+}
+
+.property-div div {
+    border: 1px solid red;
+}
+
+.property-div-middle {
+    width: 50%;
+}
+
+.property-div-right {
+    position: relative;
+}
+
+.property-div-right button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.property-div img {
+    width: 22%;
+    min-height: 100%;
+    background: lightblue;
+    border: 1px solid red;
+}

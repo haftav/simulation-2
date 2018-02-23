@@ -5,6 +5,8 @@ import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { updateUser } from '../../ducks/reducer'
 
+import './Auth.css'
+
 
 class Auth extends Component {
     constructor(props) {
@@ -54,9 +56,9 @@ class Auth extends Component {
             return <Redirect to="/dashboard" />
         }
         return (
-            <div>
-                <div>
-                    <h1>Auth</h1>
+            <div className="auth">
+                <div className="auth-content">
+                    <img src="https://raw.githubusercontent.com/DevMountain/simulation-2/master/assets/auth_logo.png" alt="" />
                     <h2>Username</h2>
                     <input onChange={(e) => this.handleChange("username", e.target.value)}/>
                     <h2>Password</h2>

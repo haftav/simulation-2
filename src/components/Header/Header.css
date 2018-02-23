@@ -1,0 +1,14 @@
+.header {
+    height: 100px;
+    width: 100%;
+    background: #519872;
+}
+
+.header-content {
+    height: 100%;
+    width: 60%;
+    margin: auto; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

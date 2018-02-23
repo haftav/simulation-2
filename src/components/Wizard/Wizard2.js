@@ -14,8 +14,8 @@ class Wizard2 extends Component {
                 address, city, listingState, zip } = this.props;
         return (
             <div>
-                <h1>Wizard 2</h1>
                 <Header />
+                <h1>Wizard 2</h1>
                 <div>
                     <h1>Add new listing</h1>
                     <button>Cancel</button>

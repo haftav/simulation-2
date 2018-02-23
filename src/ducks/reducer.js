@@ -24,6 +24,7 @@ const UPDATE_MONTHLY_MORTGAGE = "UPDATE_MONTHLY_MORTGAGE";
 const UPDATE_DESIRED_RENT = "UPDATE_DESIRED_RENT";
 const UPDATE_USER = "UPDATE_USER";
 const RESET_STATE = "RESET_STATE";
+const LOGOUT = "LOGOUT";
 
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -51,6 +52,8 @@ export default function (state = initialState, action) {
             return Object.assign({}, state, { user: Object.assign({}, action.payload) })
         case RESET_STATE:
             return Object.assign({}, action.payload)
+        case LOGOUT:
+            return Object.assign({}, state, { user: {} })
         default: return state;
     }
 }
@@ -148,5 +151,12 @@ export function resetState(user) {
             desiredRent: 0,
             user: user
         }
+    }
+}
+
+export function logout() {
+    return {
+        type: LOGOUT,
+        payload: {}
     }
 }
