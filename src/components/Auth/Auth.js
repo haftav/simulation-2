@@ -33,7 +33,6 @@ class Auth extends Component {
         const { username, password } = this.state;
         axios.post('/api/auth/register', { username, password }).then(res => {
             if (res.data) {
-                console.log(res.data.username, res.data.id);
                 this.props.updateUser({ username: res.data.username, id: res.data.id })
                 this.setState({ redirect: true })
             }
@@ -51,7 +50,7 @@ class Auth extends Component {
     }
 
     render() {
-        console.log(this.props);
+        console.log(this.props.match);
         if (this.state.redirect) {
             return <Redirect to="/dashboard" />
         }

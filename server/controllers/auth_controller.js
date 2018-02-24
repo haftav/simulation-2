@@ -4,6 +4,7 @@ module.exports = {
         const { username, password } = req.body;
         db.get_user([username, password]).then(user => {
             if (user[0]) {
+                console.log(user[0])
                 req.session.user = { id: user[0].userid, username: user[0].username }
                 res.status(200).send(req.session.user);
             } else {

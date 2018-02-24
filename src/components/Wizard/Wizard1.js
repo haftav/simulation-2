@@ -9,6 +9,12 @@ import { updatePropName, updatePropDescription, resetState } from '../../ducks/r
 
 class Wizard1 extends Component {
 
+    componentDidMount() {
+        if (!this.props.user.username) {
+            this.props.history.push('/');
+        }
+    }
+
     render() {
         console.log(this.props);
         const { updatePropDescription, updatePropName, propName, propDescription, resetState, user } = this.props;

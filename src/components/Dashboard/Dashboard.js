@@ -25,16 +25,21 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-
-        axios.get('/api/properties').then(res => {
-            this.setState({ properties: res.data })
-        })
+        console.log(this.props.user.username);
+        if (this.props.user.username) {
+            axios.get('/api/properties').then(res => {
+                this.setState({ properties: res.data })
+            })
+        } else {
+            this.props.history.push('/')
+        }
     }
 
     filterProperties() {
         axios.get(`/api/properties?rent=${Number(this.state.query)}`).then(res => {
             this.setState({ properties: res.data })
         })
+        console.log('lol')
     }
 
     resetProperties() {
@@ -63,8 +68,8 @@ class Dashboard extends Component {
             console.log(true);
             return <Redirect to="/"/>
         }
-        console.log(this.props);
-        console.log(this.state.properties);
+        // console.log(this.props.match);
+        // console.log(this.state.properties);
         let properties = this.state.properties.filter((el) => el.userid == this.props.user.id)
         properties = properties.map((el, idx) => {
             const { propid, propname, propdescription, address, city, state, zip,
