@@ -6,6 +6,7 @@ module.exports = {
             if (user[0]) {
                 console.log(user[0])
                 req.session.user = { id: user[0].userid, username: user[0].username }
+                console.log(req.session.user);
                 res.status(200).send(req.session.user);
             } else {
                 res.status(500).send('User is not registered');

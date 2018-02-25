@@ -22,17 +22,27 @@ class Wizard1 extends Component {
             <div>
                 <Header />
                 <div className="wizard">
-                    <div>
-                        <h1>Step 1</h1>
+                    <div className="wizard-top">
                         <h1>Add new listing</h1>
-                        <Link to="/dashboard"><button onClick={() => resetState(user)}>Cancel</button></Link>
+                        <Link className="cancel-button" to="/dashboard"><button onClick={() => resetState(user)}>Cancel</button></Link>
                     </div>
                     <h3>Step 1</h3>
-                    <h2>Property Name</h2>
-                    <input value={propName} onChange={(e) => updatePropName(e.target.value)} />
-                    <h2>Property Description</h2>
-                    <input value={propDescription} onChange={(e) => updatePropDescription(e.target.value)} />
-                    <Link to="/wizard/2"><button>Next Step</button></Link>
+                    <div className="circle-div">
+                        <div className="circle"><div className="circle-complete"></div></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                    </div>
+                    <div className="wizard-content">
+                        <h2>Property Name</h2>
+                        <input value={propName} onChange={(e) => updatePropName(e.target.value)} />
+                        <h2>Property Description</h2>
+                        <input className="wizard-prop-description" value={propDescription} onChange={(e) => updatePropDescription(e.target.value)} />
+                    </div>
+                    <div className="wizard-buttons" style={{justifyContent: "center"}}>
+                        <Link to="/wizard/2"><button>Next Step</button></Link>
+                    </div>
                 </div>
             </div>
         )
@@ -40,7 +50,7 @@ class Wizard1 extends Component {
 }
 
 function mapStateToProps(state) {
-    const { propName, propDescription, user} = state;
+    const { propName, propDescription, user } = state;
     return {
         propName,
         propDescription,

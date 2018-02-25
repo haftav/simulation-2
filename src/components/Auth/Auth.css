@@ -19,6 +19,7 @@
 .auth-content h2 {
     text-align: left;
     margin-left: 20px;
+    font-weight: 700;
 }
 
 .auth-content input {
@@ -27,18 +28,27 @@
 }
 
 .auth-buttons {
-    width: 30%;
+    width: 50%;
     margin: auto;
     display: flex;
-    justify-content: space-around
+    justify-content: space-around;
 }
 
 .auth-buttons button {
     height: 40px;
-    width: 100px;
+    width: 130px;
     border: none;
     font-size: 15px;
     font-weight: 1000;
     background: gray;
+    cursor: pointer;
 }
 
+.auth-buttons button:first-of-type {
+    background: #8AE892;
+}
+
+.auth-buttons button:last-of-type {
+    background: #3B5249;
+    color: white;
+}

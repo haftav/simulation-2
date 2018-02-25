@@ -4,3 +4,125 @@
     width: 60%;
     margin: auto;
 }
+
+.wizard > h3 {
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.wizard-top {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.cancel-button {
+    height: 37px;
+    width: 75px;
+}
+
+.wizard-top button {
+    height: 100%;
+    width: 100%;
+    border: none;
+    background: #FEC2C2;
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.circle-div {
+    display: flex;
+    justify-content: space-around;
+    width: 65%;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.circle {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #AFD4C0;
+}
+
+.circle-complete {
+    height: 37px;
+    width: 37px;
+    background: #519872;
+    border-radius: 100%;
+}
+
+.wizard-content {
+    width: 55%;
+    text-align: left;
+    margin: auto;
+}
+
+.wizard-content h2 {
+    margin-bottom: 5px;
+}
+
+.wizard-content input {
+    width: 100%;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    padding-left: 0px;
+}
+
+.wizard-prop-description {
+    padding-bottom: 100px;
+}
+
+.wizard-content-span {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wizard-city {
+    width: 40%;
+}
+
+.wizard-state {
+    width: 40%;
+}
+
+.wizard-zip {
+    width: 36%;
+}
+
+.wizard-image {
+    height: 300px;
+    width: 100%;
+    background: rgb(212, 212, 212);
+    margin-bottom: 25px;
+    border: 1px solid #519872;
+    border-radius: 3px;
+}
+
+.wizard-buttons {
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+    margin: 27px auto;
+}
+
+.wizard-buttons button {
+    padding: 7px;
+    width: 115px;
+    background: #3B5249;
+    color: white;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.wizard-buttons .complete-button {
+    background: #8AE892;
+    color: black;
+}

@@ -19,17 +19,25 @@ class Wizard4 extends Component {
             <div>
                 <Header />
                 <div className="wizard">
-                    <h1>Step 4</h1>
-                    <div>
+                    <div className="wizard-top">
                         <h1>Add new listing</h1>
-                        <Link to="/dashboard"><button onClick={() => resetState(user)}>Cancel</button></Link>
+                        <Link to="/dashboard" className="cancel-button"><button onClick={() => resetState(user)}>Cancel</button></Link>
                     </div>
                     <h3>Step 4</h3>
-                    <h2>Loan Amount</h2>
-                    <input value={loanAmount} onChange={(e) => updateLoanAmount(e.target.value)} />
-                    <h2>Monthly Mortgage</h2>
-                    <input value={monthlyMortgage} onChange={(e) => updateMonthlyMortgage(e.target.value)} />
-                    <div>
+                    <div className="circle-div">
+                        <div className="circle"><div className="circle-complete"></div></div>
+                        <div className="circle"><div className="circle-complete"></div></div>
+                        <div className="circle"><div className="circle-complete"></div></div>
+                        <div className="circle"><div className="circle-complete"></div></div>
+                        <div className="circle"></div>
+                    </div>
+                    <div className="wizard-content">
+                        <h2>Loan Amount</h2>
+                        <input value={loanAmount} onChange={(e) => updateLoanAmount(e.target.value)} />
+                        <h2>Monthly Mortgage</h2>
+                        <input value={monthlyMortgage} onChange={(e) => updateMonthlyMortgage(e.target.value)} />
+                    </div>
+                    <div className="wizard-buttons">
                         <Link to="/wizard/3"><button>Previous Step</button></Link>
                         <Link to="/wizard/5"><button>Next Step</button></Link>
                     </div>

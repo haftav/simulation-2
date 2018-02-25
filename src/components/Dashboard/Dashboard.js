@@ -48,7 +48,7 @@ class Dashboard extends Component {
 
     deleteProperty(val) {
         axios.delete(`/api/properties/${val}`).then(res => {
-            this.setState({properties: res.data})
+            this.setState({ properties: res.data })
         })
     }
 
@@ -60,7 +60,7 @@ class Dashboard extends Component {
 
         if (this.state.logout) {
             console.log(true);
-            return <Redirect to="/"/>
+            return <Redirect to="/" />
         }
         // console.log(this.props.match);
         // console.log(this.state.properties);
@@ -76,13 +76,15 @@ class Dashboard extends Component {
                         <p>{propdescription}</p>
                     </div>
                     <div className="property-div-right">
-                        <button value={propid} onClick={(e) => this.deleteProperty(e.target.value)}>X</button>
-                        <h2>Loan: {loanamount}</h2>
-                        <h2>Monthly Mortgage: {monthlymortgage}</h2>
-                        <h2>Recommended Rent: {Number(monthlymortgage) + Number(monthlymortgage / 4)}</h2>
-                        <h2>Desired Rent: {desiredrent}</h2>
-                        <h2>Address: {address}</h2>
-                        <h2>City: {city}</h2>
+                        <div>
+                            <button value={propid} onClick={(e) => this.deleteProperty(e.target.value)}>X</button>
+                            <h2>Loan: {loanamount}</h2>
+                            <h2>Monthly Mortgage: {monthlymortgage}</h2>
+                            <h2>Recommended Rent: {Number(monthlymortgage) + Number(monthlymortgage / 4)}</h2>
+                            <h2>Desired Rent: {desiredrent}</h2>
+                            <h2>Address: {address}</h2>
+                            <h2>City: {city}</h2>
+                        </div>
                     </div>
                 </div>
             )
@@ -92,10 +94,10 @@ class Dashboard extends Component {
                 <Header />
                 <div className="dashboard">
                     <Link to="/wizard/1" ><button className="add-new">Add new property</button></Link>
-                    <span>
+                    <span className="filter-span">
                         <p>List properties with "desired rent" greater than: $
                             <span className="filter-span">
-                                <input type="number" onChange={(e) => this.handleChange(e.target.value)}/>
+                                <input type="number" onChange={(e) => this.handleChange(e.target.value)} />
                                 <button onClick={this.filterProperties}>Filter</button>
                                 <button onClick={this.resetProperties}>Reset</button>
                             </span>

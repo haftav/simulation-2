@@ -20,20 +20,27 @@ class Wizard3 extends Component {
             <div>
                 <Header />
                 <div className="wizard">
-                    <h1>Step 3</h1>
-                    <div>
+                    <div className="wizard-top">
                         <h1>Add new listing</h1>
-                        <Link to="/dashboard"><button onClick={() => resetState(user)}>Cancel</button></Link>
+                        <Link to="/dashboard" className="cancel-button"><button onClick={() => resetState(user)}>Cancel</button></Link>
                     </div>
                     <h3>Step 3</h3>
-
-                    <div>
-
+                    <div className="circle-div">
+                        <div className="circle"><div className="circle-complete"></div></div>
+                        <div className="circle"><div className="circle-complete"></div></div>
+                        <div className="circle"><div className="circle-complete"></div></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
                     </div>
-                    <h2>Image URL</h2>
-                    <input value={image} onChange={(e) => updateImage(e.target.value)} />
+                    <div className="wizard-content">
+                        <div className="wizard-image">
 
-                    <div>
+                        </div>
+                        <h2>Image URL</h2>
+                        <input value={image} onChange={(e) => updateImage(e.target.value)} />
+                    </div>
+
+                    <div className="wizard-buttons">
                         <Link to="/wizard/2"><button>Previous Step</button></Link>
                         <Link to="/wizard/4"><button>Next Step</button></Link>
                     </div>
