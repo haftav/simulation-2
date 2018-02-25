@@ -7,6 +7,12 @@ import { updateImage, resetState } from '../../ducks/reducer';
 
 class Wizard3 extends Component {
 
+    componentDidMount() {
+        if (!this.props.user.username) {
+            this.props.history.push('/');
+        }
+    }
+
     render() {
         console.log(this.props);
         const { updateImage, image, user } = this.props;

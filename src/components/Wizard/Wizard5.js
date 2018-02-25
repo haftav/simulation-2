@@ -18,6 +18,12 @@ class Wizard5 extends Component {
         this.addToDatabase = this.addToDatabase.bind(this);
     }
 
+    componentDidMount() {
+        if (!this.props.user.username) {
+            this.props.history.push('/');
+        }
+    }
+
     addToDatabase() {
         const { propName, propDescription, address,
             city, listingState, zip, image, loanAmount,

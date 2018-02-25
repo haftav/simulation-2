@@ -14,8 +14,8 @@ class Auth extends Component {
 
         this.state = {
             username: '',
-            password: '',
-            redirect: false
+            password: ''
+            // redirect: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -34,7 +34,8 @@ class Auth extends Component {
         axios.post('/api/auth/register', { username, password }).then(res => {
             if (res.data) {
                 this.props.updateUser({ username: res.data.username, id: res.data.id })
-                this.setState({ redirect: true })
+                this.props.history.push('/dashboard')
+                // this.setState({ redirect: true })
             }
         })
     }
@@ -44,16 +45,15 @@ class Auth extends Component {
         axios.post('/api/auth/login', { username, password }).then(res => {
             if (res.data) {
                 this.props.updateUser({ username: res.data.username, id: res.data.id })
-                this.setState({ redirect: true })
+                this.props.history.push('/dashboard')
+                // this.setState({ redirect: true })
             }
         })
     }
 
     render() {
-        console.log(this.props.match);
-        if (this.state.redirect) {
-            return <Redirect to="/dashboard" />
-        }
+        console.log(this.props.user);
+
         return (
             <div className="auth">
                 <div className="auth-content">

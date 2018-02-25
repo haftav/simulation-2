@@ -6,6 +6,12 @@ import Header from '../Header/Header';
 
 class Wizard4 extends Component {
 
+    componentDidMount() {
+        if (!this.props.user.username) {
+            this.props.history.push('/');
+        }
+    }
+
     render() {
         console.log(this.props);
         const { updateLoanAmount, updateMonthlyMortgage, loanAmount, monthlyMortgage, resetState, user } = this.props;

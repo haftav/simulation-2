@@ -8,6 +8,12 @@ import { updateAddress, updateCity, updateState, updateZip, user, resetState } f
 
 class Wizard2 extends Component {
 
+    componentDidMount() {
+        if (!this.props.user.username) {
+            this.props.history.push('/');
+        }
+    }
+
     render() {
         console.log(this.props);
         const { updateAddress, updateCity, updateState, updateZip, resetState,

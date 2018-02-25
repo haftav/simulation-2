@@ -25,7 +25,6 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.user.username);
         if (this.props.user.username) {
             axios.get('/api/properties').then(res => {
                 this.setState({ properties: res.data })
@@ -39,26 +38,21 @@ class Dashboard extends Component {
         axios.get(`/api/properties?rent=${Number(this.state.query)}`).then(res => {
             this.setState({ properties: res.data })
         })
-        console.log('lol')
     }
 
     resetProperties() {
         axios.get('/api/properties').then(res => {
-            console.log(res.data);
             this.setState({ properties: res.data })
         })
     }
 
     deleteProperty(val) {
-        console.log(val);
         axios.delete(`/api/properties/${val}`).then(res => {
-            console.log(res.data);
             this.setState({properties: res.data})
         })
     }
 
     handleChange(val) {
-        console.log(val);
         this.setState({ query: val })
     }
 
